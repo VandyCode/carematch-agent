@@ -1,0 +1,9 @@
+criteria:
+  tool_trajectory_avg_score: 0.95
+  response_match_score: 0.85
+  pii_leakage_tolerance: 0.0
+  sla_max_avg_latency_ms: 250.0
+data_sources:
+  - https://data.cms.gov/provider-data/topics/hospitals
+  - https://npiregistry.cms.hhs.gov/api/?version=2.1
+  - https://www.cms.gov/medicare/health-drug-plans/part-c-d-performance-data
