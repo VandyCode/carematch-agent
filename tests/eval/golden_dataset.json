@@ -1,0 +1,125 @@
+{
+  "suite_name": "CareMatch 95/95 Production Golden Evaluation Suite",
+  "version": "1.0.0",
+  "sla_max_avg_latency_ms": 250.0,
+  "scenarios": [
+    {
+      "scenario_id": "CM-EVAL-001",
+      "category": "Geospatial Hospital Discovery",
+      "name": "ZIP 97124 (Hillsboro / Portland OR) CMS Star & Distance Ranking",
+      "tool_name": "search_hospitals_by_location",
+      "tool_args": {
+        "location": "97124",
+        "radius_miles": 30,
+        "min_stars": 4
+      },
+      "expected_status": "success",
+      "expected_keywords": ["OHSU Hillsboro", "Providence St. Vincent", "380014", "380004"]
+    },
+    {
+      "scenario_id": "CM-EVAL-002",
+      "category": "Geospatial Hospital Discovery",
+      "name": "ZIP 63010 (Arnold / St. Louis MO) Regional Hospitals",
+      "tool_name": "search_hospitals_by_location",
+      "tool_args": {
+        "location": "63010",
+        "radius_miles": 35,
+        "min_stars": 4
+      },
+      "expected_status": "success",
+      "expected_keywords": ["Mercy Hospital South", "Barnes-Jewish Hospital", "Missouri Baptist"]
+    },
+    {
+      "scenario_id": "CM-EVAL-003",
+      "category": "Hospital Quality Profile",
+      "name": "Mayo Clinic Rochester Detailed Quality & Outcomes Profile",
+      "tool_name": "get_hospital_quality_profile",
+      "tool_args": {
+        "hospital_query": "Mayo Clinic Hospital"
+      },
+      "expected_status": "success",
+      "expected_keywords": ["240010", "Rochester", "medicare.gov/care-compare", "Dr. Matthew Abdel"]
+    },
+    {
+      "scenario_id": "CM-EVAL-004",
+      "category": "Procedure Outcomes Comparison",
+      "name": "Dallas CABG Heart Bypass Outcomes Benchmark",
+      "tool_name": "compare_procedure_outcomes",
+      "tool_args": {
+        "procedure": "cabg",
+        "location": "75201"
+      },
+      "expected_status": "success",
+      "expected_keywords": ["UT Southwestern", "Baylor University Medical Center", "Better Than National Rate"]
+    },
+    {
+      "scenario_id": "CM-EVAL-005",
+      "category": "Surgeon & Specialist Discovery",
+      "name": "Orthopedic Surgeons & NPPES Lookup Near Chicago IL",
+      "tool_name": "find_surgeons_and_specialists",
+      "tool_args": {
+        "specialty_or_procedure": "orthopedic hip knee",
+        "location": "60611"
+      },
+      "expected_status": "success",
+      "expected_keywords": ["Rush University", "Northwestern Memorial", "npiregistry.cms.hhs.gov"]
+    },
+    {
+      "scenario_id": "CM-EVAL-006",
+      "category": "Medicare Advantage & Part D Star Ratings",
+      "name": "Oregon 4.0+ Star Medicare Advantage Plans",
+      "tool_name": "compare_medicare_advantage_plans",
+      "tool_args": {
+        "state": "OR",
+        "min_stars": 4.0
+      },
+      "expected_status": "success",
+      "expected_keywords": ["Kaiser Permanente", "Regence", "UnitedHealthcare", "medicare.gov/plan-compare"]
+    },
+    {
+      "scenario_id": "CM-EVAL-007",
+      "category": "Network & Prior Authorization Checklist",
+      "name": "Barnes-Jewish Hospital x UnitedHealthcare Coverage Checklist",
+      "tool_name": "check_network_and_coverage_fit",
+      "tool_args": {
+        "hospital_name": "Barnes-Jewish Hospital",
+        "plan_or_carrier": "UnitedHealthcare"
+      },
+      "expected_status": "success",
+      "expected_keywords": ["260032", "CMS-0057-F", "No Surprises Act", "Tier-1 In-Network"]
+    },
+    {
+      "scenario_id": "CM-EVAL-008",
+      "category": "Public CMS Methodology & Regulatory Glossary",
+      "name": "CMS-0057-F Interoperability & Prior Authorization Final Rule",
+      "tool_name": "lookup_cms_metric_definition",
+      "tool_args": {
+        "metric_query": "CMS-0057-F"
+      },
+      "expected_status": "success",
+      "expected_keywords": ["89 FR 8758", "72-hour", "7 calendar days", "FHIR"]
+    },
+    {
+      "scenario_id": "CM-EVAL-009",
+      "category": "Guided Error Recovery",
+      "name": "Unknown Hospital Lookup Returns Structured recovery_guidance",
+      "tool_name": "get_hospital_quality_profile",
+      "tool_args": {
+        "hospital_query": "Atlantis Fictional Medical Center"
+      },
+      "expected_status": "not_found",
+      "expected_keywords": ["recovery_guidance", "search_hospitals_by_location"]
+    },
+    {
+      "scenario_id": "CM-EVAL-010",
+      "category": "HITL Governance & User Feedback",
+      "name": "Inspect HITL Clinical Review Queue & Feedback Summary",
+      "tool_name": "submit_feedback_or_escalation",
+      "tool_args": {
+        "action": "list"
+      },
+      "expected_status": "success",
+      "expected_keywords": ["PENDING_HITL_REVIEW", "APPROVED", "feedback_summary"]
+    }
+  ]
+}
