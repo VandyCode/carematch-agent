@@ -1,0 +1,58 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "carematch-agent"
+version = "1.0.0"
+description = "CareMatch: Autonomous Multi-Agent Healthcare Quality & Medicare Coverage Navigator (ADK + A2A + FastAPI)"
+readme = "README.md"
+license = { text = "Apache-2.0" }
+requires-python = ">=3.11"
+authors = [
+  { name = "CareMatch Contributors" }
+]
+keywords = ["healthcare", "cms", "medicare", "adk", "multi-agent", "fastapi", "a2a"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Healthcare Industry",
+  "License :: OSI Approved :: Apache Software License",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+]
+dependencies = [
+  "pydantic>=2.7.0,<3.0.0",
+  "fastapi>=0.115.0,<1.0.0",
+  "uvicorn[standard]>=0.30.0,<1.0.0",
+  "python-dotenv>=1.0.0,<2.0.0",
+  "httpx>=0.27.0,<1.0.0",
+  "pyyaml>=6.0.1,<7.0.0",
+  "opentelemetry-api>=1.25.0,<2.0.0",
+  "opentelemetry-sdk>=1.25.0,<2.0.0",
+]
+
+[project.optional-dependencies]
+adk = [
+  "google-adk>=1.0.0",
+  "google-genai>=1.0.0",
+  "a2a-sdk[http-server]>=0.2.0",
+]
+dev = [
+  "pytest>=8.3.0,<10.0.0",
+  "pytest-asyncio>=0.24.0,<2.0.0",
+  "ruff>=0.6.0",
+]
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-v"
+asyncio_default_fixture_loop_scope = "function"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
