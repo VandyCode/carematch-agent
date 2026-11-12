@@ -1,0 +1,46 @@
+{
+  "eval_cases": [
+    {
+      "eval_case_id": "hillsboro_97124_hip_knee_and_surgeons",
+      "prompt": {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Compare the best hospitals and orthopedic surgeons near ZIP 97124 for hip or knee replacement using public CMS ratings."
+          }
+        ]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [
+            {
+              "text": "Near ZIP 97124 (Hillsboro, OR), top CMS-rated acute hospitals include Providence St. Vincent Medical Center (5 Stars overall, CCN 380004, Better Than National Rate for Hip/Knee complications), OHSU Hillsboro Medical Center (4 Stars, CCN 380014), and OHSU Hospital Marquam Hill (4 Stars, CCN 380009). Orthopedic specialists include Dr. Gustav Fischer, Dr. Zachary Working, and Dr. Jung Yoo; always verify active NPI and hospital privileges via npiregistry.cms.hhs.gov and in-network status with your insurer."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "eval_case_id": "arnold_63010_hospitals_and_medicare_checklist",
+      "prompt": {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Find high-rated hospitals near ZIP 63010 in Arnold MO and show how to verify network coverage with UnitedHealthcare Medicare Advantage."
+          }
+        ]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [
+            {
+              "text": "Near ZIP 63010 (Arnold, MO), nearby CMS-rated hospitals include Mercy Hospital South (4 Stars, ~6 miles), Missouri Baptist Medical Center (5 Stars, CCN 260020), and Barnes-Jewish Hospital (4 Stars, CCN 260032). UnitedHealthcare Medicare Advantage PPO (H5253) carries a 4.0 CMS Star Rating. Because public CMS datasets do not publish real-time hospital contracts, call Member Services to confirm both the facility CCN and surgeon are Tier-1 In-Network and check prior authorization rules under CMS-0057-F."
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
